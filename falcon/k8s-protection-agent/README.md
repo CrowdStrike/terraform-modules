@@ -1,29 +1,60 @@
-## Usage
+# Usage
+
+## Prerequisites
 ```
-module "logical-name" {
-  source = "github.com/ryanjpayne/cs-tf-modules/falcon/k8s-protection-agent"
-  
-  falcon-cid = ""
-  falcon-cloud = ""
-  client-id = ""
-  client-secret = ""
-  docker-token = ""
-  cluster-arn = ""
-  environment = ""
-}
+helm repo add kpagent-helm https://registry.crowdstrike.com/kpagent-helm && helm repo update
 ```
 
 ## Provider Config
 ```
-provider "helm" {
-  kubernetes {
-    host                   = var.cluster-endpoint
-    cluster_ca_certificate = base64decode(var.cluster-ca-cert)
-    exec {
-      api_version = "client.authentication.k8s.io/v1beta1"
-      args        = ["eks", "get-token", "--cluster-name", var.cluster-name]
-      command     = "aws"
+terraform {
+  required_providers {
+    google = {
+      source = "hashicorp/google"
+      version = ">= 4.41.0"
+    }
+    helm = {
+      source = "hashicorp/helm"
+      version = ">= 2.4.1"
     }
   }
+}
+
+provider "google" {
+  credentials = file(var.credentials)
+
+  project = var.project
+  region  = var.region
+}
+
+data "google_client_config" "default" {
+}
+
+provider "helm" {
+  kubernetes {
+    host                   = "https://${module.gke.cluster-endpoint}"
+    token                  = data.google_client_config.default.access_token
+    cluster_ca_certificate = "${base64decode(module.gke.cluster-ca-certificate)}"
+  }
+}
+```
+
+## Module Block
+```
+module "protection-agent" {
+    source = "github.com/ryanjpayne/cs-tf-modules/falcon/k8s-protection-agent"
+    protection-agent-config = var.protection-agent-config
+}
+
+variable "protection-agent-config" {
+    default = <<EOF
+crowdstrikeConfig:
+  clientID: [falcon-client-id]
+  clientSecret: [falcon-client-secret]
+  clusterName: [gke-cluster-name]
+  dockerAPIToken: [falcon-docker-token]
+  cid: [falcon-cid] # all lower with no checksum
+  env: [falcon-cloud] # us-1, us-2 or eu-1
+EOF
 }
 ```
