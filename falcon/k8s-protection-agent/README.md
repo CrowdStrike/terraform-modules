@@ -136,7 +136,7 @@ EOF
 }
 
 module "protection-agent" {
-    source = "github.com/ryanjpayne/cs-tf-modules/falcon/k8s-protection-agent"
+    source = "github.com/crowdstrike/terraform-modules/falcon/k8s-protection-agent"
     protection-agent-config = var.protection-agent-config
 }
 ```
