@@ -36,3 +36,5 @@ resource "google_container_node_pool" "gke-nodes" {
     }
   }
 }
+
+data "google_client_config" "provider" {}
