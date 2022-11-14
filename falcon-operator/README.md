@@ -4,6 +4,6 @@ https://github.com/CrowdStrike/falcon-operator
 ## Usage
 ```
 module "logical-name" {
-    source = "github.com/ryanjpayne/cs-tf-modules/falcon/falcon-operator"
+    source = "CrowdStrike/terraform-modules/falcon/falcon-operator"
 }
 ```
