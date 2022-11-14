@@ -48,3 +48,8 @@ output "nodepool-managed-instance-group-urls" {
   description = "The resource URLs of the managed instance groups associated with this node pool."
   value       = google_container_node_pool.gke-nodes.managed_instance_group_urls
 }
+
+output "gke-token" {
+  description = "The token used to authenticate to the cluster."
+  value       =  data.google_client_config.provider.access_token
+}

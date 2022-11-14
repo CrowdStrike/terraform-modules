@@ -1,14 +1,12 @@
-data "http" "operator-yaml" {
-  url = "https://raw.githubusercontent.com/CrowdStrike/falcon-operator/main/deploy/falcon-operator.yaml"
+data "http" "falcon_operator" {
+    url = "https://raw.githubusercontent.com/isimluk/falcon-operator/terraform/deploy/falcon-operator.yaml"
 }
 
-locals {
-  manifests = split("---", data.http.operator-yaml.response_body)
-  manifestsLessOne = "${slice(local.manifests, 1, length(local.manifests))}"
+data "kubectl_file_documents" "docs" {
+    content = data.http.falcon_operator.response_body
 }
 
-resource "kubernetes_manifest" "falcon-operator" {
-  provider = kubernetes
-  for_each = toset(local.manifestsLessOne)
-  manifest = yamldecode(each.key)
+resource "kubectl_manifest" "falcon_operator" {
+    for_each  = data.kubectl_file_documents.docs.manifests
+    yaml_body = each.value
 }
