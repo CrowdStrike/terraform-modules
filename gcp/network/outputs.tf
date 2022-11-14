@@ -1,54 +1,54 @@
-output "network-name" {
+output "network_name" {
   description = "The Name of the Network"
-  value       = google_compute_network.vpc-network.name
+  value       = google_compute_network.vpc_network.name
 }
 
-output "private-subnet-1-name" {
+output "private_subnet_1_name" {
   description = "The Name of Private Subnet 1"
-  value       = google_compute_subnetwork.vpc-private-subnet-1.name
+  value       = google_compute_subnetwork.vpc_private_subnet_1.name
 }
-output "private-subnet-2-name" {
+output "private_subnet_2_name" {
   description = "The Name of Private Subnet 2"
-  value       = google_compute_subnetwork.vpc-private-subnet-2.name
+  value       = google_compute_subnetwork.vpc_private_subnet_2.name
 }
-output "private-subnet-3-name" {
+output "private_subnet_3_name" {
   description = "The Name of Private Subnet 3"
-  value       = google_compute_subnetwork.vpc-private-subnet-3.name
+  value       = google_compute_subnetwork.vpc_private_subnet_3.name
 }
-output "public-subnet-1-name" {
+output "public_subnet_1_name" {
   description = "The Name of Public Subnet 1"
-  value       = google_compute_subnetwork.vpc-public-subnet-1.name
+  value       = google_compute_subnetwork.vpc_public_subnet_1.name
 }
-output "public-subnet-2-name" {
+output "public_subnet_2_name" {
   description = "The Name of Public Subnet 2"
-  value       = google_compute_subnetwork.vpc-public-subnet-2.name
+  value       = google_compute_subnetwork.vpc_public_subnet_2.name
 }
-output "puyblic-subnet-3-name" {
+output "puyblic_subnet_3_name" {
   description = "The Name of Public Subnet 3"
-  value       = google_compute_subnetwork.vpc-public-subnet-3.name
+  value       = google_compute_subnetwork.vpc_public_subnet_3.name
 }
 
-output "private-subnet-1-cidr" {
+output "private_subnet_1_cidr" {
   description = "The CIDR of Private Subnet 1"
-  value       = google_compute_subnetwork.vpc-private-subnet-1.ip_cidr_range
+  value       = google_compute_subnetwork.vpc_private_subnet_1.ip_cidr_range
 }
-output "private-subnet-2-cidr" {
+output "private_subnet_2_cidr" {
   description = "The CIDR of Private Subnet 2"
-  value       = google_compute_subnetwork.vpc-private-subnet-2.ip_cidr_range
+  value       = google_compute_subnetwork.vpc_private_subnet_2.ip_cidr_range
 }
-output "private-subnet-3-cidr" {
+output "private_subnet_3_cidr" {
   description = "The CIDR of Private Subnet 3"
-  value       = google_compute_subnetwork.vpc-private-subnet-3.ip_cidr_range
+  value       = google_compute_subnetwork.vpc_private_subnet_3.ip_cidr_range
 }
-output "public-subnet-1-cidr" {
+output "public_subnet_1_cidr" {
   description = "The CIDR of Public Subnet 1"
-  value       = google_compute_subnetwork.vpc-public-subnet-1.ip_cidr_range
+  value       = google_compute_subnetwork.vpc_public_subnet_1.ip_cidr_range
 }
-output "public-subnet-2-cidr" {
+output "public_subnet_2_cidr" {
   description = "The CIDR of Public Subnet 2"
-  value       = google_compute_subnetwork.vpc-public-subnet-2.ip_cidr_range
+  value       = google_compute_subnetwork.vpc_public_subnet_2.ip_cidr_range
 }
-output "puyblic-subnet-3-cidr" {
+output "puyblic_subnet_3_cidr" {
   description = "The CIDR of Public Subnet 3"
-  value       = google_compute_subnetwork.vpc-public-subnet-3.ip_cidr_range
+  value       = google_compute_subnetwork.vpc_public_subnet_3.ip_cidr_range
 }

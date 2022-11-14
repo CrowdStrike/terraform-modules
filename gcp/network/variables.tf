@@ -6,21 +6,21 @@ variable "region" {
   type = string
 }
 
-variable "private-subnet-cidr-1" {
+variable "private_subnet_cidr_1" {
   type = string
 }
-variable "private-subnet-cidr-2" {
+variable "private_subnet_cidr_2" {
   type = string
 }
-variable "private-subnet-cidr-3" {
+variable "private_subnet_cidr_3" {
   type = string
 }
-variable "public-subnet-cidr-1" {
+variable "public_subnet_cidr_1" {
   type = string
 }
-variable "public-subnet-cidr-2" {
+variable "public_subnet_cidr_2" {
   type = string
 }
-variable "public-subnet-cidr-3" {
+variable "public_subnet_cidr_3" {
   type = string
 }

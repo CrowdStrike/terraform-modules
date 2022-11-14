@@ -6,15 +6,15 @@ variable "region" {
   type = string
 }
 
-variable "vpc-name" {
+variable "vpc_name" {
   type = string
 }
 
-variable "subnet-name" {
+variable "subnet_name" {
   type = string
 }
 
-variable "gke-num-nodes" {
+variable "gke_num_nodes" {
   type = number
   default     = 2
   description = "number of gke nodes"
