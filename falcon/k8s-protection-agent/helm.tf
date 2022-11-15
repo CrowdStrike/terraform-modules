@@ -4,6 +4,6 @@ resource "helm_release" "kpagent" {
   namespace = "falcon-kubernetes-protection"
   create_namespace = true
   values = [
-    var.protection-agent-config
+    var.protection_agent_config
   ]
 }
