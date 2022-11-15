@@ -1,4 +1,4 @@
-resource "google_container_cluster" "gke-cluster" {
+resource "google_container_cluster" "gke_cluster" {
   name     = "${var.alias}-gke-cluster"
   location = var.region
   
@@ -8,16 +8,16 @@ resource "google_container_cluster" "gke-cluster" {
   remove_default_node_pool = true
   initial_node_count       = 1
 
-  network    = var.vpc-name
-  subnetwork = var.subnet-name
+  network    = var.vpc_name
+  subnetwork = var.subnet_name
 }
 
 # Separately Managed Node Pool
-resource "google_container_node_pool" "gke-nodes" {
+resource "google_container_node_pool" "gke_nodes" {
   name       = "${var.alias}-gke-nodepool"
   location   = var.region
-  cluster    = google_container_cluster.gke-cluster.name
-  node_count = var.gke-num-nodes
+  cluster    = google_container_cluster.gke_cluster.name
+  node_count = var.gke_num_nodes
 
   node_config {
     oauth_scopes = [
