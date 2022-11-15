@@ -1,5 +1,5 @@
 resource "google_container_cluster" "gke_cluster" {
-  name     = "${var.alias}-gke-cluster"
+  name     = "${var.alias}-${var.cluster_name}"
   location = var.region
   
   # We only use separately managed node pools. 
@@ -28,7 +28,7 @@ resource "google_container_node_pool" "gke_nodes" {
     labels = {
       env = var.alias
     }
-
+    image_type = var.node_os
     machine_type = "n1-standard-1"
     tags         = ["${var.alias}-gke-node", "${var.alias}-gke-cluster"]
     metadata = {

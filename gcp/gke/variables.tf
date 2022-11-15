@@ -2,6 +2,10 @@ variable "alias" {
   type = string
 }
 
+variable "cluster_name" {
+  type = string
+}
+
 variable "region" {
   type = string
 }
@@ -16,6 +20,12 @@ variable "subnet_name" {
 
 variable "gke_num_nodes" {
   type = number
-  default     = 2
+  default     = 1
   description = "number of gke nodes"
+}
+
+# Allowed Values: UBUNTU_CONTAINERD or COS_CONTAINERD
+variable "node_os" {
+  type = string
+  default = "UBUNTU_CONTAINERD"
 }
