@@ -1,5 +1,5 @@
 resource "google_container_cluster" "gke_cluster" {
-  name     = "${var.alias}-gke-cluster"
+  name     = "${var.alias}-${cluster_name}"
   location = var.region
   
   # We only use separately managed node pools. 
