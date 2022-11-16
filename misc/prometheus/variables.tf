@@ -1,3 +1,8 @@
+variable "cloud" {
+  type = string
+  # Allowed values: "aws" or "gcp"
+}
+
 variable "prometheus_config" {
   default = <<-YAML
   prometheus-node-exporter:

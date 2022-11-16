@@ -1,4 +1,17 @@
+resource "google_container_cluster" "gke_cluster_autopilot" {
+  count = var.autopilot == true ? 1 : 0
+  name     = "${var.alias}-${var.cluster_name}"
+  location = var.region
+  enable_autopilot = true
+  ip_allocation_policy {
+  }
+  initial_node_count       = 1
+  network    = var.vpc_name
+  subnetwork = var.subnet_name
+}
+
 resource "google_container_cluster" "gke_cluster" {
+  count = var.autopilot == false ? 1 : 0
   name     = "${var.alias}-${var.cluster_name}"
   location = var.region
   
@@ -14,9 +27,10 @@ resource "google_container_cluster" "gke_cluster" {
 
 # Separately Managed Node Pool
 resource "google_container_node_pool" "gke_nodes" {
+  count = var.autopilot == false ? 1 : 0
   name       = "${var.alias}-gke-nodepool"
   location   = var.region
-  cluster    = google_container_cluster.gke_cluster.name
+  cluster    = google_container_cluster.gke_cluster[0].name
   node_count = var.gke_num_nodes
 
   node_config {
