@@ -29,3 +29,8 @@ variable "node_os" {
   type = string
   default = "UBUNTU_CONTAINERD"
 }
+
+variable "autopilot" {
+  type = bool
+  default = false
+}

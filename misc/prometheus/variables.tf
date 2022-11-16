@@ -1,3 +1,12 @@
+variable "cloud" {
+  type = string
+}
+
+variable "autopilot" {
+  type = bool
+  default = false
+}
+
 variable "prometheus_config" {
   default = <<-YAML
   prometheus-node-exporter:
