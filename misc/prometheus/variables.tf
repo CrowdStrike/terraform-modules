@@ -1,10 +1,6 @@
 variable "cloud" {
   type = string
-}
-
-variable "autopilot" {
-  type = bool
-  default = false
+  # Allowed values: "aws" or "gcp"
 }
 
 variable "prometheus_config" {
