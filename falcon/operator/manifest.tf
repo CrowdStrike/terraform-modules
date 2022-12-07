@@ -1,5 +1,5 @@
 data "http" "falcon_operator" {
-    url = "https://raw.githubusercontent.com/isimluk/falcon-operator/terraform/deploy/falcon-operator.yaml"
+    url = "https://raw.githubusercontent.com/CrowdStrike/falcon-operator/main/deploy/falcon-operator.yaml"
 }
 
 data "kubectl_file_documents" "docs" {
@@ -49,9 +49,9 @@ resource "kubectl_manifest" "falcon_container_sensor" {
         cloud_region: autodiscover
       registry:
         type: crowdstrike
-      installer_args:
-        - -falconctl-opts
-        - --tags=${var.environment}
+      falcon:
+        tags: 
+        - ${var.environment}
     YAML
     depends_on = [
       kubectl_manifest.falcon_operator
