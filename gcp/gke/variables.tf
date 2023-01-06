@@ -36,7 +36,7 @@ variable "autopilot" {
 }
 
 variable "resource_labels" {
-  type = list(map(string))
+  type = map
   default = {
     cstag-environment = "pov"
   }
