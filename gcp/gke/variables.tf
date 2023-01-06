@@ -34,3 +34,10 @@ variable "autopilot" {
   type = bool
   default = false
 }
+
+variable "resource_labels" {
+  type = map
+  default = {
+    cstag-environment = "pov"
+  }
+}
