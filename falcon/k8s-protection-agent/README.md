@@ -74,7 +74,13 @@ provider "helm" {
 | falcon_cid | Your Falcon CID, all lower with no checksum | String | Yes |
 | falcon_env | us-1, us-2 or eu-1 | String | Yes |
 
-
+## How to retrieve your Falcon Docker API Token and CID
+1. Log in to Falcon Console
+2. Navigate to https://falcon.crowdstrike.com/cloud-security/registration?return_to=eks
+3. Click Register New Kubernetes Cluster
+4. Click Self-Managed Kubernetes Service
+5. Type any value for Cluster Name and click Generate
+6. The generated config will contain both your Docker API Token and CID
 
 ## Example Usage
 
