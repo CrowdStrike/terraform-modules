@@ -123,20 +123,14 @@ provider "helm" {
   }
 }
 
-variable "protection-agent-config" {
-    default = <<EOF
-crowdstrikeConfig:
-  clientID: [falcon-client-id]
-  clientSecret: [falcon-client-secret]
-  clusterName: [gke-cluster-name]
-  dockerAPIToken: [falcon-docker-token]
-  cid: [falcon-cid] # all lower with no checksum
-  env: [falcon-cloud] # us-1, us-2 or eu-1
-EOF
-}
-
 module "protection-agent" {
     source = "github.com/crowdstrike/terraform-modules/falcon/k8s-protection-agent"
-    protection-agent-config = var.protection-agent-config
+    
+    falcon_client_id = ""
+    falcon_client_secret = ""
+    cluster_name = "my-cluster"
+    falcon_docker_api_token = ""
+    falcon_cid ""
+    falcon_env "us-1"
 }
 ```

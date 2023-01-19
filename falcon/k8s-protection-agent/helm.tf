@@ -4,6 +4,14 @@ resource "helm_release" "kpagent" {
   namespace = "falcon-kubernetes-protection"
   create_namespace = true
   values = [
-    var.protection_agent_config
+    <<EOF
+crowdstrikeConfig:
+  clientID: ${var.falcon_client_id}
+  clientSecret: ${var.falcon_client_secret}
+  clusterName: ${var.cluster_name}
+  dockerAPIToken: ${var.falcon_docker_api_token}
+  cid: ${var.falcon_cid}
+  env: ${var.falcon_env}
+EOF
   ]
 }
