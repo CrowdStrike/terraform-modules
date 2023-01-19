@@ -44,13 +44,9 @@ provider "helm" {
 ```
 provider "helm" {
   kubernetes {
-    host                   = var.cluster_endpoint
-    cluster_ca_certificate = base64decode(var.cluster_ca_cert)
-    exec {
-      api_version = "client.authentication.k8s.io/v1beta1"
-      args        = ["eks", "get-token", "--cluster-name", var.cluster_name]
-      command     = "aws"
-    }
+    host                   = "https://${my-cluster-endpoint}"
+    cluster_ca_certificate = base64decode(my-cluster-ca-certificate)
+    token                  = data.aws_eks_cluster_auth.cluster-auth.token
   }
 }
 ```
@@ -71,23 +67,20 @@ provider "helm" {
 
 | Name | Description | Type | Required |
 |------|-------------|------|:--------:|
-| protection-agent-config | Values for Helm Chart | String | Yes |
+| falcon_client_id | Your Falcon API Client Id | String | Yes |
+| falcon_client_secret | Your Falcon Client Secret | String | Yes |
+| cluster_name | Your Cluster Name | String | Yes |
+| falcon_docker_api_token | Falcon Docker API Token | String | Yes |
+| falcon_cid | Your Falcon CID, all lower with no checksum | String | Yes |
+| falcon_env | us-1, us-2 or eu-1 | String | Yes |
 
-Example:
-```
-variable "protection-agent-config" {
-    default = <<EOF
-crowdstrikeConfig:
-  clientID: [falcon-client-id]
-  clientSecret: [falcon-client-secret]
-  clusterName: [gke-cluster-name]
-  dockerAPIToken: [falcon-docker-token]
-  cid: [falcon-cid] # all lower with no checksum
-  env: [falcon-cloud] # us-1, us-2 or eu-1
-EOF
-}
-```
-
+## How to retrieve your Falcon Docker API Token and CID
+1. Log in to Falcon Console
+2. Navigate to https://falcon.crowdstrike.com/cloud-security/registration?return_to=eks
+3. Click Register New Kubernetes Cluster
+4. Click Self-Managed Kubernetes Service
+5. Type any value for Cluster Name and click Generate
+6. The generated config will contain both your Docker API Token and CID
 
 ## Example Usage
 
@@ -123,20 +116,14 @@ provider "helm" {
   }
 }
 
-variable "protection-agent-config" {
-    default = <<EOF
-crowdstrikeConfig:
-  clientID: [falcon-client-id]
-  clientSecret: [falcon-client-secret]
-  clusterName: [gke-cluster-name]
-  dockerAPIToken: [falcon-docker-token]
-  cid: [falcon-cid] # all lower with no checksum
-  env: [falcon-cloud] # us-1, us-2 or eu-1
-EOF
-}
-
 module "protection-agent" {
     source = "github.com/crowdstrike/terraform-modules/falcon/k8s-protection-agent"
-    protection-agent-config = var.protection-agent-config
+    
+    falcon_client_id = ""
+    falcon_client_secret = ""
+    cluster_name = "my-cluster"
+    falcon_docker_api_token = ""
+    falcon_cid = ""
+    falcon_env = "us-1"
 }
 ```
