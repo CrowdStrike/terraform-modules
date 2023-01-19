@@ -4,7 +4,7 @@ variable "falcon_client_id" {
 }
 variable "falcon_client_secret" {
   type = string
-  description = "Your Falcon Client Secret"
+  description = "Your Falcon API Client Secret"
 }
 variable "cluster_name" {
   type = string
