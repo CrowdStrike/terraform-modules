@@ -72,7 +72,7 @@ provider "helm" {
 | cluster_name | Your Cluster Name | String | Yes |
 | falcon_docker_api_token | Falcon Docker API Token | String | Yes |
 | falcon_cid | Your Falcon CID, all lower with no checksum | String | Yes |
-| falcon_env | us-1, us-2 or eu-1 | String | Yes |
+| falcon_cloud | us-1, us-2 or eu-1 | String | Yes |
 
 ## How to retrieve your Falcon Docker API Token and CID
 1. Log in to Falcon Console
@@ -124,6 +124,6 @@ module "protection-agent" {
     cluster_name = "my-cluster"
     falcon_docker_api_token = ""
     falcon_cid = ""
-    falcon_env = "us-1"
+    falcon_cloud = "us-1"
 }
 ```
