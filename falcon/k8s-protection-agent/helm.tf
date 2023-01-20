@@ -11,7 +11,7 @@ crowdstrikeConfig:
   clusterName: ${var.cluster_name}
   dockerAPIToken: ${var.falcon_docker_api_token}
   cid: ${var.falcon_cid}
-  env: ${var.falcon_env}
+  env: ${var.falcon_cloud}
 EOF
   ]
 }
