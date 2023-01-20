@@ -18,7 +18,7 @@ variable "falcon_cid" {
   type = string
   description = "Your Falcon CID, all lower with no checksum"
 }
-variable "falcon_env" {
+variable "falcon_cloud" {
   type = string
   description = "us-1, us-2 or eu-1"
 }
