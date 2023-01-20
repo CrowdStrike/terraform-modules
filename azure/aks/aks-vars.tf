@@ -13,26 +13,26 @@ variable "cluster_name" {
   type = string
 }
 variable "kubernetes_version" {
-  type = string
+  type    = string
   default = "1.23.12"
 }
 variable "aks_num_nodes" {
-  type = number
+  type    = number
   default = 1
 }
 variable "aks_min_nodes" {
-  type = number
+  type    = number
   default = 1
 }
 variable "aks_max_nodes" {
-  type = number
+  type    = number
   default = 1
 }
 variable "node_vm_size" {
-  type = string
+  type    = string
   default = "Standard_B4ms"
 }
 variable "os_sku" {
-  type = string
+  type    = string
   default = "Ubuntu"
 }

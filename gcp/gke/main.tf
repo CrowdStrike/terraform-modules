@@ -7,7 +7,7 @@ resource "google_container_cluster" "gke_cluster_autopilot" {
   network            = var.vpc_name
   subnetwork         = var.subnet_name
   resource_labels    = var.resource_labels
-  
+
   ip_allocation_policy {
   }
 }
@@ -20,9 +20,9 @@ resource "google_container_cluster" "gke_cluster" {
   initial_node_count       = 1
   network                  = var.vpc_name
   subnetwork               = var.subnet_name
-  resource_labels          = var.resource_labels  
-  
-  # We only use separately managed node pools. 
+  resource_labels          = var.resource_labels
+
+  # We only use separately managed node pools.
   # So we create the smallest possible default
   # node pool and immediately delete it.
 }
@@ -45,7 +45,7 @@ resource "google_container_node_pool" "gke_nodes" {
     }
     image_type   = var.node_os
     machine_type = "n1-standard-1"
-    tags         = ["${var.alias}-gke-node", "${var.alias}-gke-cluster"]    
+    tags         = ["${var.alias}-gke-node", "${var.alias}-gke-cluster"]
     metadata = {
       disable-legacy-endpoints = "true"
     }
