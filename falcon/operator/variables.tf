@@ -3,7 +3,7 @@
 variable "sensor_type" {
   type        = string
   default     = "FalconNodeSensor"
-  description = "Falcon sensor type: FalconNodeSensor or FalconContainer"
+  description = "Falcon sensor type: FalconNodeSensor or FalconContainer."
 
   validation {
     condition     = contains(["FalconNodeSensor", "FalconContainer"], var.sensor_type)
