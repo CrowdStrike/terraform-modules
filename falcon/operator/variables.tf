@@ -7,9 +7,8 @@ variable "sensor_type" {
 
   validation {
     condition     = contains(["FalconNodeSensor", "FalconContainer"], var.sensor_type)
-    error_message = "Sensor type must be FalconNodeSensor or FalconContainer"
+    error_message = "Sensor type must be FalconNodeSensor or FalconContainer."
   }
-
 }
 
 # Falcon credentials
