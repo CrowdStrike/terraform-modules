@@ -19,24 +19,24 @@ variable "subnet_name" {
 }
 
 variable "gke_num_nodes" {
-  type = number
+  type        = number
   default     = 1
   description = "number of gke nodes"
 }
 
 # Allowed Values: UBUNTU_CONTAINERD or COS_CONTAINERD
 variable "node_os" {
-  type = string
+  type    = string
   default = "UBUNTU_CONTAINERD"
 }
 
 variable "autopilot" {
-  type = bool
+  type    = bool
   default = false
 }
 
 variable "resource_labels" {
-  type = map
+  type = map(any)
   default = {
     cstag-environment = "pov"
   }
