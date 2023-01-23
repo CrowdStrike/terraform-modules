@@ -10,7 +10,7 @@ This module allows you to easily deploy the Kubernetes Protection Agent on your 
 
 
 1. You need a CrowdStrike API Client ID and Client Secret with:  
-- Kubernetes Protection Agent scope and write permission.
+- Kubernetes Protection Agent: **Write**
 2. You need a CrowdStrike Docker API Token.
 
 ## Version Requirements
