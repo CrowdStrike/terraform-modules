@@ -9,16 +9,9 @@ This module allows you to easily deploy the Kubernetes Protection Agent on your 
 ## Prerequisites
 
 
-1. Helm must be installed in your terminal and the following must be run on the host where Terraform is executed.
-```
-helm repo add kpagent-helm https://registry.crowdstrike.com/kpagent-helm && helm repo update
-```
-
-2. You need a CrowdStrike API Client ID and Client Secret with:  
-- Kubernetes Protection Agent scope and write permission.
-- Kubernetes Protection scope and read and write permission.
-
-3. You need a CrowdStrike Docker API Token.
+1. You need a CrowdStrike API Client ID and Client Secret with:  
+- Kubernetes Protection Agent: **Write**
+2. You need a CrowdStrike Docker API Token.
 
 ## Version Requirements
 | Name | Version |
@@ -118,7 +111,7 @@ provider "helm" {
 
 module "protection-agent" {
     source = "github.com/crowdstrike/terraform-modules/falcon/k8s-protection-agent"
-    
+
     falcon_client_id = ""
     falcon_client_secret = ""
     cluster_name = "my-cluster"
